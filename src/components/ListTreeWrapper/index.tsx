@@ -10,6 +10,7 @@ export interface ListTreeContextProps {
   onPopupTriggerClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
+export type MetaTypes = "img" | "svg" | "css" | "html" | "js" | "ts" | "jsx";
 export interface IFolderData {
   id: string;
   type: "folder";
@@ -20,7 +21,7 @@ export interface IFileData {
   id: string;
   type: "file";
   name: string;
-  meta: string;
+  meta: MetaTypes;
 }
 
 export type IFileOrFolderData = IFileData | IFolderData;
