@@ -22,6 +22,7 @@ function ListTreeFile({ meta, name, id }: Props) {
       <div
         className="listtree__clickable-filename"
         onContextMenu={onPopupTriggerClick}
+        data-id={id}
       >
         {name}
       </div>

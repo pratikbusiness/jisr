@@ -36,6 +36,7 @@ const ListTreeTrigger: FC<ListTreeTriggerProps> = ({
         <div
           className="listtree__clickable-filename"
           onContextMenu={onPopupTriggerClick}
+          data-id={id}
         >
           {name}
         </div>
