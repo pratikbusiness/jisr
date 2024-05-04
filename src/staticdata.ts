@@ -1,4 +1,6 @@
-const ListTreeData = {
+import { IFileData, IFolderData } from "./components/ListTreeWrapper";
+
+const ListTreeData: IFileData | IFolderData = {
   id: "0",
   type: "folder",
   name: "parent",

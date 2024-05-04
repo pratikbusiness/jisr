@@ -3,15 +3,16 @@ import ListTreeTrigger from "../ListTreeTrigger/index";
 import ListTreeContent from "../ListTreeContent/index";
 import { ObjectWithBooleanValues } from "../../common-types";
 import ListTreeFile from "../ListTreeFile";
+import { IFileData, IFileOrFolderData, IFolderData } from "../ListTreeWrapper";
 
 interface Props {
   openItems: ObjectWithBooleanValues;
-  data: any[];
+  data: IFileOrFolderData[];
 }
 
 const RenderListTree: React.FC<Props> = ({ openItems, data }) => {
-  const folderItems: any[] = [];
-  const fileItems: any[] = [];
+  const folderItems: IFolderData[] = [];
+  const fileItems: IFileData[] = [];
   data.forEach((el) => {
     if (el.type === "folder") {
       folderItems.push(el);
@@ -31,10 +32,8 @@ const RenderListTree: React.FC<Props> = ({ openItems, data }) => {
             isOpen={openItems[item.id] ? openItems[item.id] : false}
           >
             <ListTreeContent>
-              {item.type === "folder" ? (
+              {item.type === "folder" && (
                 <RenderListTree data={item.data || []} openItems={openItems} />
-              ) : (
-                <ListTreeFile meta={item.meta} name={item.nam} id={item.id} />
               )}
             </ListTreeContent>
           </ListTreeTrigger>

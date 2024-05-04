@@ -10,6 +10,21 @@ export interface ListTreeContextProps {
   onPopupTriggerClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
+export interface IFolderData {
+  id: string;
+  type: "folder";
+  name: string;
+  data: IFileOrFolderData[];
+}
+export interface IFileData {
+  id: string;
+  type: "file";
+  name: string;
+  meta: string;
+}
+
+export type IFileOrFolderData = IFileData | IFolderData;
+
 export const ListTreeContext = React.createContext<ListTreeContextProps>({});
 
 interface ListTreeWrapperProps extends ListTreeContextProps {

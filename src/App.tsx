@@ -1,11 +1,13 @@
 import { useState } from "react";
-import listTreeData from "./staticdata.js";
+import listTreeData from "./staticdata";
 import ListTreeRender from "./components/ListTreeRender/index";
-import ListTreeWrapper from "./components/ListTreeWrapper";
+import ListTreeWrapper, {
+  IFileOrFolderData,
+} from "./components/ListTreeWrapper";
 import { ObjectWithBooleanValues } from "./common-types";
 
 export default function App() {
-  const [data] = useState<any>(listTreeData);
+  const [data] = useState<IFileOrFolderData[]>([listTreeData]);
   const [openItems, setOpenItems] = useState<ObjectWithBooleanValues>({});
 
   const onClick = (id: string) => {
@@ -39,7 +41,7 @@ export default function App() {
       onDelete={onDelete}
       onRename={onRename}
     >
-      <ListTreeRender data={[data]} openItems={openItems} />
+      <ListTreeRender data={data} openItems={openItems} />
     </ListTreeWrapper>
   );
 }
