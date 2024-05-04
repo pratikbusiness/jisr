@@ -2,6 +2,7 @@ import React from "react";
 import ListTreeTrigger from "../ListTreeTrigger/index";
 import ListTreeContent from "../ListTreeContent/index";
 import { ObjectWithBooleanValues } from "../../common-types";
+import ListTreeFile from "../ListTreeFile";
 
 interface Props {
   openItems: ObjectWithBooleanValues;
@@ -33,14 +34,20 @@ const RenderListTree: React.FC<Props> = ({ openItems, data }) => {
               {item.type === "folder" ? (
                 <RenderListTree data={item.data || []} openItems={openItems} />
               ) : (
-                // <p>TODO: RENDER FILES LATER</p>
-                <p></p>
+                <ListTreeFile meta={item.meta} name={item.nam} id={item.id} />
               )}
             </ListTreeContent>
           </ListTreeTrigger>
         );
       })}
-      {/* <p>TODO: RENDER FILES LATER</p> */}
+      {fileItems.map((fileItem) => (
+        <ListTreeFile
+          id={fileItem.id}
+          key={fileItem.id}
+          name={fileItem.name}
+          meta={fileItem.meta}
+        />
+      ))}
     </>
   );
 };

@@ -1,0 +1,8 @@
+.listtree__file-item {
+  display: flex;
+  padding: 10px 12px;
+}
+
+.listtree__file-icon {
+  padding-right: 10px;
+}
