@@ -1,6 +1,9 @@
 import { FC, ReactNode, useContext } from "react";
 import { ArrowDownIcon, ArrowRightIcon } from "../../icons/index";
-import { ListTreeContext } from "../ListTreeWrapper/index";
+import {
+  ListTreeContext,
+  ListTreeContextProps,
+} from "../ListTreeWrapper/index";
 import "./index.css";
 
 interface ListTreeTriggerProps {
@@ -16,8 +19,8 @@ const ListTreeTrigger: FC<ListTreeTriggerProps> = ({
   children,
   id,
 }) => {
-  const { onClick } = useContext(ListTreeContext);
-
+  const { onClick, onPopupTriggerClick }: ListTreeContextProps =
+    useContext(ListTreeContext);
   return (
     <>
       <div className="flex listtree">
@@ -30,7 +33,12 @@ const ListTreeTrigger: FC<ListTreeTriggerProps> = ({
         >
           {isOpen ? <ArrowDownIcon /> : <ArrowRightIcon />}
         </div>
-        {name}
+        <div
+          className="listtree__clickable-filename"
+          onContextMenu={onPopupTriggerClick}
+        >
+          {name}
+        </div>
       </div>
       {isOpen ? children : null}
     </>

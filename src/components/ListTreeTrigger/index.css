@@ -9,3 +9,8 @@
   margin-right: 4px;
   align-items: center;
 }
+
+.listtree__clickable-filename{
+  user-select: none;
+  cursor: default;
+}

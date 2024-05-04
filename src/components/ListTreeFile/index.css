@@ -6,3 +6,8 @@
 .listtree__file-icon {
   padding-right: 10px;
 }
+
+.listtree__clickable-filename{
+  user-select: none;
+  cursor: default;
+}

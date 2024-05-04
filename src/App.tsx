@@ -20,16 +20,16 @@ export default function App() {
     });
   };
 
-  const onCopy = (id: string, type: string) => {
-    console.log("onCopy", type, id);
+  const onCopy = (id: string) => {
+    console.log("onCopy", id);
   };
 
-  const onDelete = (id: string, type: string) => {
-    console.log("onDelete", type, id);
+  const onDelete = (id: string) => {
+    console.log("onDelete", id);
   };
 
-  const onRename = (id: string, type: string) => {
-    console.log("onDelete", type, id);
+  const onRename = (id: string) => {
+    console.log("onDelete", id);
   };
 
   return (
