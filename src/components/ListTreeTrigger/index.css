@@ -1,0 +1,11 @@
+.listtree {
+  padding: 8px 12px;
+}
+
+.listtree__toggle-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  margin-right: 4px;
+  align-items: center;
+}

@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import listTreeData from "./staticdata.js";
+import ListTreeRender from "./components/ListTreeRender/index";
+import ListTreeWrapper from "./components/ListTreeWrapper";
+import { ObjectWithBooleanValues } from "./common-types";
 
-function App() {
+export default function App() {
+  const [data] = useState<any>(listTreeData);
+  const [openItems, setOpenItems] = useState<ObjectWithBooleanValues>({});
+
+  const onClick = (id: string) => {
+    setOpenItems((prev) => {
+      const newItemList = { ...prev };
+      if (newItemList[id] === true) {
+        newItemList[id] = false;
+      } else {
+        newItemList[id] = true;
+      }
+      return newItemList;
+    });
+  };
+
+  const onCopy = (id: string, type: string) => {
+    console.log("onCopy", type, id);
+  };
+
+  const onDelete = (id: string, type: string) => {
+    console.log("onDelete", type, id);
+  };
+
+  const onRename = (id: string, type: string) => {
+    console.log("onDelete", type, id);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ListTreeWrapper
+      onClick={onClick}
+      onCopy={onCopy}
+      onDelete={onDelete}
+      onRename={onRename}
+    >
+      <ListTreeRender data={[data]} openItems={openItems} />
+    </ListTreeWrapper>
   );
 }
-
-export default App;
